@@ -23,7 +23,7 @@ namespace Asteroids
             var moveTransform = new AccelerationMove(transform, _speed, _acceleration);
             var rotation = new RotationShip(transform);
             _ship = new Ship(moveTransform, rotation);
-            _weaponFire = new WeaponFire(_bullet, _barrel, _force);
+            _weaponFire = new WeaponFire(_bullet, _barrel, _force); 
             _shipPain = new ShipPain(_hp, gameObject);
         }
 
@@ -51,11 +51,7 @@ namespace Asteroids
                 _weaponFire.WeaponAttack(_bullet, _barrel, _force);
             }
         }
-
-
-
-
-
+  
         private void OnCollisionEnter2D(Collision2D other)
         {
             _shipPain.ShipDamage(gameObject);
