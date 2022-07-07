@@ -11,15 +11,16 @@ namespace ChainOfResponsibility
 
         private IEnumerator StartMoving()
         {
-            while((transform.position-_positionToMove).sqrMagnitude > 0.0f)
+            while ((transform.position - _positionToMove).sqrMagnitude > 0.0f)
             {
-                transform.position = Vector2.MoveTowards(transform.position, _positionToMove, Time.deltaTime * _speed);
+                transform.position = Vector2.MoveTowards(transform.position,
+                _positionToMove, Time.deltaTime * _speed);
                 yield return null;
             }
             base.Handle();
         }
-    
-    public override IGameHandler Handle()
+        
+        public override IGameHandler Handle()
         {
             StartCoroutine(StartMoving());
             return this;

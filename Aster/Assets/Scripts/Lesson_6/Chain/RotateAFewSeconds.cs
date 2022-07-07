@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-
 namespace ChainOfResponsibility
 {
     public sealed class RotateAFewSeconds : GameHandler
@@ -8,13 +7,14 @@ namespace ChainOfResponsibility
         [SerializeField] private float _rotationSpeed = 10.0f;
         [SerializeField] private float _rotationDuration = 3.0f;
 
-        private IEnumerator StartRotation()
+        private IEnumerator StartRotating()
         {
             var t = 0.0f;
             while (t < _rotationDuration)
             {
                 t += Time.deltaTime;
-                transform.Rotate(Vector3.forward * (_rotationSpeed * Time.deltaTime));
+                transform.Rotate(Vector3.forward * (_rotationSpeed *
+                Time.deltaTime));
                 yield return null;
             }
             base.Handle();
@@ -22,8 +22,9 @@ namespace ChainOfResponsibility
 
         public override IGameHandler Handle()
         {
-            StartCoroutine(StartRotation());
+            StartCoroutine(StartRotating());
             return this;
         }
     }
 }
+
